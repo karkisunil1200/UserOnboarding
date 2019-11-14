@@ -19,7 +19,7 @@ const FormikUserForm = withFormik({
     return {
       name: name || ' ',
       email: email || ' ',
-      password: password || ' '
+      password: password || ''
     };
   }
 });
