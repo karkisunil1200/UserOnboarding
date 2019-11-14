@@ -1,20 +1,24 @@
 import React from 'react';
 import {withFormik, Form, Field} from 'formik';
+import * as Yup from 'yup';
 
 const FormInput = ({name, email, password}) => {
   return (
     <div>
       <h1>Welcome to form</h1>
       <Form>
-        <Field type='text' name='name' placeholder='Enter your name' />
-        <Field type='text' name='email' placeholder='Enter your email' />
-        <Field type='text' name='password' placeholder='Password goes here' />
+        <label>Name</label>
+        <Field type='text' name='name' />
+        <label>Email</label>
+        <Field type='text' name='email' />
+        <label>Password</label>
+        <Field type='text' name='password' />
       </Form>
     </div>
   );
 };
 
-const FormikUserForm = withFormik({
+const FormikFormInput = withFormik({
   mapPropsToValues({name, email, password}) {
     return {
       name: name || ' ',
@@ -22,6 +26,12 @@ const FormikUserForm = withFormik({
       password: password || ''
     };
   }
-});
 
-export default FormInput;
+  //   validationSchema: Yup.object().shape({
+  //       name: Yup.string().required(),
+  //       email: Yup.string().required(),
+  //       password: Yup.string().required()
+  //   })
+})(FormInput);
+
+export default FormikFormInput;
